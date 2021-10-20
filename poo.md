@@ -1001,7 +1001,6 @@ class: middle, center, inverse
 
 ---
 
-class: middle
 .left-column[
 ### Interfaces
 ]
@@ -1035,7 +1034,6 @@ class: middle
 
 ---
 
-class: middle
 .left-column[
   ### Interfaces
   ### .red[**Travaux Pratique**]
@@ -1050,7 +1048,6 @@ Dans le projet de la société R pour avoir plus de controle sur le code et les 
 
 ---
 
-class: middle
 .left-column[
   ### Interfaces
   ### .red[**Travaux Pratique**]
@@ -1066,8 +1063,8 @@ class: middle
   ```php
   abstract class AbstractVehicule
   {
-    private int $vitesse;
-    protected string $carburant;
+    private $vitesse;
+    protected $carburant;
 
     abstract public function rouler();
   }
@@ -1076,7 +1073,6 @@ class: middle
 
 ---
 
-class: middle
 .left-column[
   ### Interfaces
   ### .red[**Travaux Pratique**]
@@ -1088,8 +1084,8 @@ class: middle
   ```php
   class Voiture extends AbstractVehicule
   {
-    private int $vitesse = 90; // Error
-    protected string $carburant = 'diesel';
+    private $vitesse = 90; // Error
+    protected $carburant = 'diesel';
 
     public function rouler()
     {
@@ -1102,11 +1098,49 @@ class: middle
 
 ---
 
-class: middle
 .left-column[
   ### Interfaces
   ### .red[**Travaux Pratique**]
   ### Abstraction
+  ### .red[**Travaux Pratique**]
+]
+.right-column[
+  Pour mieux assimiler l'abstraction nous allons concevoir un programme a partir de module UML suivant:
+
+  [![](https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG5cbiAgICBjbGFzcyBQb2ludDJEIHtcbiAgICAgICAgLSBpbnQgeFxuICAgICAgICAtIGludCB5XG4gICAgICAgICsgYm91Z2VyKGludCBkeCwgaW50IGR5KVxuICAgICAgICArIHRvU3RyaW5nKClcbiAgICB9XG5cbiAgICBGb3JtZSA8fC0tIFJlY3RhbmdsZVxuICAgIEZvcm1lIDx8LS0gQ2VyY2xlXG4gICAgRm9ybWUgXCIwLG5cIiAtLT4gXCIxLDFcIiBQb2ludDJEXG4gICAgRm9ybWUgOiAjIGludCBpZFxuICAgIEZvcm1lIDogIyBQb2ludDJEIGNlbnRyZVxuICAgIEZvcm1lIDogKyBpbnQgc3RhdGljIGNvbXB0ZXVyID0gMFxuICAgIEZvcm1lOiArIGFic3RyYWN0IHN1cmZhY2UoKVxuICAgIEZvcm1lOiArIGFic3RyYWN0IHBlcmltZXRyZSgpXG4gICAgRm9ybWU6ICsgYm91Z2VyKGludCBkeCwgaW50IGR5KVxuICAgIFxuICAgIGNsYXNzIFJlY3RhbmdsZXtcbiAgICAgICMgaW50IGxhcmdldXJcbiAgICAgICMgaW50IGxvbmd1ZXVyIFxuICAgICAgKyB0b1N0cmluZygpXG4gICAgICArIHN1cmZhY2UoKVxuICAgICAgKyBwZXJpbWV0cmUoKVxuICAgIH1cbiAgICBcbiAgICBjbGFzcyBDZXJjbGUge1xuICAgICAgLSBpbnQgcmF5b25cbiAgICAgICsgdG9TdHJpbmcoKVxuICAgICAgKyBzdXJmYWNlKClcbiAgICAgICsgcGVyaW1ldHJlKClcbiAgICB9XG4gICAgXG4gICAgY2xhc3MgQ2FycmUge1xuICAgICAgKyB0b1N0cmluZygpXG4gICAgfVxuXG4gICAgUmVjdGFuZ2xlIDx8LS0gQ2FycmUgICAgICAiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9)](https://mermaid.live/edit#eyJjb2RlIjoiY2xhc3NEaWFncmFtXG5cbiAgICBjbGFzcyBQb2ludDJEIHtcbiAgICAgICAgLSBpbnQgeFxuICAgICAgICAtIGludCB5XG4gICAgICAgICsgYm91Z2VyKGludCBkeCwgaW50IGR5KVxuICAgICAgICArIHRvU3RyaW5nKClcbiAgICB9XG5cbiAgICBGb3JtZSA8fC0tIFJlY3RhbmdsZVxuICAgIEZvcm1lIDx8LS0gQ2VyY2xlXG4gICAgRm9ybWUgXCIwLG5cIiAtLT4gXCIxLDFcIiBQb2ludDJEXG4gICAgRm9ybWUgOiAjIGludCBpZFxuICAgIEZvcm1lIDogIyBQb2ludDJEIGNlbnRyZVxuICAgIEZvcm1lIDogKyBpbnQgc3RhdGljIGNvbXB0ZXVyID0gMFxuICAgIEZvcm1lOiArIGFic3RyYWN0IHN1cmZhY2UoKVxuICAgIEZvcm1lOiArIGFic3RyYWN0IHBlcmltZXRyZSgpXG4gICAgRm9ybWU6ICsgYm91Z2VyKGludCBkeCwgaW50IGR5KVxuICAgIFxuICAgIGNsYXNzIFJlY3RhbmdsZXtcbiAgICAgICMgaW50IGxhcmdldXJcbiAgICAgICMgaW50IGxvbmd1ZXVyIFxuICAgICAgKyB0b1N0cmluZygpXG4gICAgICArIHN1cmZhY2UoKVxuICAgICAgKyBwZXJpbWV0cmUoKVxuICAgIH1cbiAgICBcbiAgICBjbGFzcyBDZXJjbGUge1xuICAgICAgLSBpbnQgcmF5b25cbiAgICAgICsgdG9TdHJpbmcoKVxuICAgICAgKyBzdXJmYWNlKClcbiAgICAgICsgcGVyaW1ldHJlKClcbiAgICB9XG4gICAgXG4gICAgY2xhc3MgQ2FycmUge1xuICAgICAgKyB0b1N0cmluZygpXG4gICAgfVxuXG4gICAgUmVjdGFuZ2xlIDx8LS0gQ2FycmUgICAgICAiLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiXG59IiwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)
+]
+
+
+---
+
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+  ### .red[**Travaux Pratique**]
+]
+.right-column[
+1. Définir chaque classe, puis les propriété, ensuite les accesseurs, mutateurs et les constrcuteurs.
+2. La fonction magique **`Point2D::__toString`** permet d’afficher les propriétés sous la forme : **"Point(x =10,y =3)"**
+3. La méthode **`Point2D::bouger`** prenant en paramètre les deux entiers `dx` et `dy` et qui permet de translater le point vers le point  `x + dx` ,`y + dy`.
+4. Lors de l'instanciation d’une Forme, son id est incrémenté selon le nombre de Formes instanciés.
+5. Définir la méthode **`Rectangle::surface`** qui renvoie la surface d’un objet rectangle : **largeur x longueur**.
+6. Définir la méthode **`Rectangle::perimetre`** qui renvoie le périmètre d’un objet rectangle : **2 x (largeur + longueur)**.
+7. Définir la méthode **`Cercle::surface`** qui renvoie la surface d’un objet cercle : **π x r²**
+8. Définir la méthode **`Cercle::perimetre`** qui renvoie le périmètre d’un objet rectangle : **2 x π x r**
+9. Chaque methode __toString affichera `{NomClasse: id, ... liste des propriétés }` 
+  - exemple : `{Rectangle :1, Centre:Point(x=2, y=3), Largeur:1, Longueur:2, surface:2, perimetre:6 }`
+10. Instancier 3 formes : cercle(x=1, y=3, rayon=2), rectangle(x=2, y=3, longueur=3, largeur=2), carre(x=4, y=6, longueur=3)
+11. Appliquer une déplacement du cercle par (dx=2,dy=1), rectangle (dx=3, dy=4), carre (dx=1, y=5)
+
+]
+---
+
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+  ### .red[**Travaux Pratique**]
   ### Polymorphisme
 ]
 .right-column[
@@ -1115,4 +1149,286 @@ class: middle
   La beauté du polymorphisme réside dans le fait que le code travaillant avec les différentes classes n'a **pas besoin de savoir quelle classe il utilise**, car elles sont toutes utilisées de la même manière.
 
   Dans le monde de la programmation, le polymorphisme est utilisé pour rendre les applications plus modulaires et extensibles. Au lieu d'instructions conditionnelles compliquées décrivant différents plans d'action, vous créez des objets interchangeables que vous sélectionnez en fonction de vos besoins. C'est l'objectif de base du polymorphisme.
+]
+
+---
+
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+  ### .red[**Travaux Pratique**]
+  ### Polymorphisme
+]
+.right-column[
+Exemple : 
+
+```php
+interface Transport {
+  public function voyager(Voyageur $voyageur);
+}
+
+class Voiture implements Transport {
+  public function voyager(Voyageur $voyageur) {
+    return $voyageur->getNom().' voyage en voiture' ;
+  }
+}
+
+class Avion implements Transport {
+  public function voyager(Voyageur $voyageur) {
+    return $voyageur->getNom().' voyage en avion' ;
+  }
+}
+
+class Voyageur {
+  private $nom;
+  public function __construct($nom){
+      $this->nom = $nom;
+  }
+  public function getNom(){
+      return $this->nom;
+  }
+  public function voyager(Transport $transport){
+      return $transport->voyager($this);
+  }
+}
+```
+]
+
+---
+
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+  ### .red[**Travaux Pratique**]
+  ### Polymorphisme
+]
+.right-column[
+```php
+$dany = new Voyageur('Daniel');
+$voiture = new Voiture();
+$dany->voyager($voiture);
+
+$avion = new Avion();
+$dany->voyager($avion);
+```
+
+Cet exemple illustre le polymorphisme. 
+
+Un voyageur (`$dany`) à la choix entre deux transport : voiture ou avion. Quel que soit le transport, l’action sera appelée par la même méthode : dans notre cas, `voyager()`. 
+
+La méthode ne se soucie pas des détails de chaque voyage. En effet chaque type de transport devient une classe qui définit les données de du voyage.
+]
+
+---
+
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+  ### .red[**Travaux Pratique**]
+  ### Polymorphisme
+  ### .red[**Travaux Pratique**]
+]
+.right-column[
+La société R pense à l'éducation des jeunes et souhaite mettre en place la gestion des stagiaires.
+Ils ne seront pas considerer comme des employés mais pourront tout de meme travailler.
+
+- Ajoutons une nouvelle classe **`Stagiaire`** qui n'etendra pas de la classe **`Employe`**
+
+  - Le stagiaire aura un nom, prenom, age (Vous pouvez utiliser les traits)
+
+- Ajouter un interface **`Travailleur`** qui aura une fonction `travailler()`
+
+- Implementer cette interface aux classes `Employe` et `Stagiaire`
+
+- Définir une méthode `faireTravailler` à la classe `Responsable` qui pourra faire travailler un objet qui implemente `TravailleurInterface`. Puis l'utiliser.
+ 
+- Définir une methode `faireTravaillerEquipe` à la classe `Responsable` qui faira travailler son équipe. Puis l'utiliser.
+]
+
+---
+
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+  ### .red[**Travaux Pratique**]
+  ### Polymorphisme
+  ### .red[**Travaux Pratique**]
+  ### Namespace
+]
+.right-column[
+Dans ce tutoriel nous allons apprendre les espaces de noms en PHP. En PHP, lorsque nous créons de grandes applications ou lorsque nous intégrons des applications/bibliothèques tierces, il peut y avoir des risques de conflits entre les noms de classes, les noms de fonctions. Donc pour éviter ces problèmes, les « espaces de noms » en PHP fournissent un moyen de regrouper les classes, interfaces, fonctions et constantes.
+
+Pour définir un namespace, rien de plus simple. On va utiliser le mot clé `namespace` juste avant la définition de la classe :
+
+```php
+# Interfaces/Vehicule.php
+namespace Interfaces;
+interface Vehicule {}
+
+# Classes/Vehicule.php
+require 'Interfaces/Vehicule.php';
+namespace Classes;
+use Interfaces\Vehicule as VehiculeInterface;
+class Vehicule implements VehiculeInterface {}
+```
+
+L’espace de noms est utilisé pour éviter des conflits et introduire plus de flexibilité et d’organisation dans le code. Tout comme les répertoires, l’espace de noms peut contenir une hiérarchie connue sous le nom de sous-espaces. PHP utilise la barre oblique inverse « `\` » comme séparateur d’espace de noms.
+]
+---
+
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+  ### .red[**Travaux Pratique**]
+  ### Polymorphisme
+  ### .red[**Travaux Pratique**]
+  ### Namespace
+]
+.right-column[
+**Conclusion**
+
+- Un espace de noms peut être considéré comme un concept abstrait. Il permet de redéclarer les mêmes fonctions/classes/interfaces dans un espace de noms séparé sans obtenir l’erreur fatale.
+
+- Un espace de noms est un bloc de code hiérarchiquement étiqueté contenant un code PHP régulier.
+
+- Un espace de noms peut contenir du code PHP valide.
+
+- Un espace de noms concerne les types de code suivants : classes (y compris les classes abstraits et les traits), interfaces, fonctions et constantes.
+
+- Les espaces de noms sont déclarés en utilisant le mot-clé **`namespace`**.
+]
+---
+
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+  ### .red[**Travaux Pratique**]
+  ### Polymorphisme
+  ### .red[**Travaux Pratique**]
+  ### Namespace
+  ### .red[**Travaux Pratique**]
+]
+.right-column[
+- Ajouter un répertoires `Classes/`, `Traits/`, `Abstracts/` et `Interfaces/` pour stocker nos différentes classes.
+
+- Réorganiser les classes, traits, abstracts et interfaces dans les dossiers respectifs  
+
+- Pour chaque fichier, y définir les namespace 
+
+  - **`namespace Classes;`**
+
+  - **`namespace Interfaces`**
+
+  - **`namespace Traits`**
+
+  - **`namespace Abstracts`**
+
+- Faire une `require_once` de chaque fichier dans `index.php`
+
+- Utiliser le mot clé `use` pour resoudre les erreurs de classe indefini dans chaque fichier
+]
+
+---
+
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+  ### .red[**Travaux Pratique**]
+  ### Polymorphisme
+  ### .red[**Travaux Pratique**]
+  ### Namespace
+  ### .red[**Travaux Pratique**]
+  ### Les exceptions
+]
+.right-column[
+  PHP a introduit une nouvelle façon de gérer la plupart des erreurs en utilisant ce qu’on appelle les **exceptions**. Cette nouvelle façon de procéder se base sur le PHP orienté objet et sur la classe **`\Exception`**.
+
+  L’idée ici va être de créer ou de **« lancer (`throw`)»** un nouvel objet `\Exception` lorsqu’une erreur spécifique est détectée. Dès qu’une exception est lancée, le script va suspendre son exécution et le PHP va chercher un endroit dans le script où l’exception va être **« attrapée (`catch`) ».**
+
+  Utiliser des exceptions va nous permettre de gérer les erreurs de manière plus fluide et de personnaliser la façon dont un script doit gérer certaines erreurs.
+
+  Notez que quasiment tous les langages serveurs utilisent le concept d’exceptions pour prendre en charge les erreurs car c’est la meilleure façon de procéder à ce jour.
+
+  #### Comment utiliser les excepetions
+
+  Une exception peut être lancée `throw` et attrapée `catch` dans PHP. Le code devra être entouré d'un bloc `try` pour faciliter la saisie d'une exception potentielle.
+]
+---
+
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+  ### .red[**Travaux Pratique**]
+  ### Polymorphisme
+  ### .red[**Travaux Pratique**]
+  ### Namespace
+  ### .red[**Travaux Pratique**]
+  ### Les exceptions
+]
+.right-column[
+On va ameliorer l'accesseur `setCarburant` de notre classe `Vehicule`, en utilisant la gestions des erreurs via les exceptions.
+
+```php
+class Voiture
+{
+  ...
+
+  public function setCarburant($carburant)
+  {
+    if(!in_array($carburant, ['diesel', 'essence', 'ethanol'])) {
+      throw new \Exception("La voiture ne supporte pas le carburant ".$carbrant, 1);
+    }
+
+    $this->carburant = $carburant;
+  }
+}
+
+try {
+  $voiture = new Voiture();
+  $voiture->setCarburant('eau');
+} catch (\Exception $e) {
+  echo 'Message d\'erreur : ' .$e->getMessage();
+  echo 'Code d\'erreur : ' .$e->getCode();
+  echo $e->getFile();
+}
+```
+
+L’idée derrière les exceptions va être d’anticiper les situations problématiques (situations qui vont pouvoir causer une erreur) et de lancer une exception si la situation est rencontrée.
+]
+
+---
+
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+  ### .red[**Travaux Pratique**]
+  ### Polymorphisme
+  ### .red[**Travaux Pratique**]
+  ### Namespace
+  ### .red[**Travaux Pratique**]
+  ### Les exceptions
+  ### .red[**Travaux Pratique**]
+]
+.right-column[
+  Nous allons appliquer la gestion d'erreur sur notre application de la société R.
+  1. Ajouter une nouveau repertoire `Exceptions`
+  
+  2. Y définir une nouvelle classe `RException` dans le namespace `Exceptions`
+  
+  3. Dans la methode `Employe::setAnciennete` gerer les cas de plus de 40 ans
+  
+  4. Dans la methode `Employe::setAge` gerer les cas des personnes n'entrant pas dans la tranche d'age de 18 - 65 ans.
+  
+  5. Utiliser un `try-catch` lors du set de l'age ou de l'anciennété (present dans le constructeur)
+
+  6. Dans la methode `Employe::incrementeEmploye` gerer par une exception lorsque le quota max est atteint
 ]
