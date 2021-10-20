@@ -874,3 +874,245 @@ class: middle
   $voiture->conduire();
    ```
 ]
+
+---
+
+class: middle
+.left-column[
+  ## Héritage
+  ### Mot clé extends
+  ### Visibilité protected
+  ### Mot clé Final
+]
+.right-column[
+  Le mot-clé **`final`** empêche les classes enfants de surcharger une méthode en préfixant la définition avec final. Si la classe elle-même est définie comme **`finale`**, elle ne pourra pas être étendue.
+
+  Cela peut être utile si vous souhaitez empêcher explicitement certains développeurs de surcharger certaines méthodes ou d’étendre certaines classes dans le cas d’un projet Open Source par exemple.
+
+  ```php
+  class Vehicule 
+  { 
+    final public function rouler() { ... }
+  }
+
+  final class Voiture extends Vehicule
+  {
+
+  }
+
+  ```
+  * La methode `Vehicule::rouler()` ne pourra pas etre redefini par les classes enfants
+
+  * La classe `Voiture` ne pourra pas étendre à d'autres classes
+]
+---
+
+class: middle
+.left-column[
+  ## Héritage
+  ### Mot clé extends
+  ### Visibilité protected
+  ### Mot clé Final
+  ### Trait
+]
+.right-column[
+  PHP ne supporte que l’héritage simple, c’est à dire, une classe fille ne peut hériter que d’une seul classe mère. Donc, que faire si une classe a besoin d’hériter de plusieurs classes mères ? Les **traits** résolvent ce problème.
+
+  Les **traits** sont utilisés pour déclarer les méthodes qui peuvent être utilisées dans plusieurs classes. Les **traits** peuvent avoir des méthodes et des méthodes abstraites qui peuvent être utilisées dans plusieurs classes, et les méthodes peuvent avoir n’importe quel modificateur d’accès (`public`, `private`, or `protected`).
+
+  Les traits sont déclarés avec le mot-clé **`trait`** :
+
+  ```php
+  trait VitesseTrait
+  {
+    protected $vitesse = 120;
+
+    public function setVitesse($vitesse)
+    {
+      $this->vitesse = $vitesse;
+    }
+
+    public function getVitesse()
+    {
+      return $this->vitesse;
+    }
+  }
+  ```
+]
+
+---
+
+class: middle
+.left-column[
+  ## Héritage
+  ### Mot clé extends
+  ### Visibilité protected
+  ### Mot clé Final
+  ### Trait
+]
+.right-column[
+  **Utilisation de trait dans une classe**
+
+  ```php
+    class Vehicule
+    {
+      use vitesseTrait;
+      ...
+    }
+
+    $vehicule = new Vehicule();
+    $vehicule->setVitesse(170);
+  ```
+
+  Si d’autres classes ont besoin d’utiliser la propriété **`vitesse`** et ses **accesseurs**, utilisez simplement le trait « `VitesseTrait` » dans ces classes. Cela réduit la duplication du code, car il n’est pas nécessaire de déclarer à nouveau la même propriété et méthodes encore et encore.
+]
+
+---
+
+class: middle
+.left-column[
+  ## Héritage
+  ### Mot clé extends
+  ### Visibilité protected
+  ### Mot clé Final
+  ### Trait
+  ### .red[**Travaux Pratique**]
+]
+.right-column[
+Continuons d’améliorer l'outils de gestion de la société R. En effet elle souhaiterai gérer aussi les responsable qui est un employé mais avec des privilèges.
+
+- Ajouter une classe `Responsable` qui étendra de `Employe`
+
+- Cette nouvelle classe aura comme nouvelle propriété `equipe` (accesseurs compris) qui sera un tableau d'employé
+
+- Ajouter lui une nouvelle méthode `ajouterEmploye` qui pendra en paramètre un objet de type `Employe`
+
+**Note :** Il est possible depuis PHP5 de typer les variable de type classe comme ce qui suit
+
+```php
+public function test(ClassName $var) { ... }
+```
+]
+
+---
+
+class: middle, center, inverse
+# 4. Plus de contrôle
+
+---
+
+class: middle
+.left-column[
+### Interfaces
+]
+.right-column[
+  Une interface permet aux utilisateurs de créer des programmes, en spécifiant les méthodes publiques qu’une classe doit implémenter, sans impliquer la complexité et les détails de l’implémentation des méthodes. Une interface est définie comme une classe, mais avec le mot-clé **`interface`**. L’interface ne contient pas de propriétés ou de variables comme le cas dans une classe
+
+  ```php
+  interface VehiculeInterface
+  {
+    public function rouler();
+    public static function afficherNbPortes();
+  }
+
+  class Vehicule implements VehiculeInterface
+  { ... }
+  ```
+
+  Une classe peut implémenter plusieurs interfaces, séparées par des virgules.
+
+  ```php
+  interface VoitureInterface
+  {
+    public function conduire();
+
+  }
+
+  class Voiture extends Vehicule implements VehiculeInterface, VoitureInterface
+  { ... }
+  ```
+]
+
+---
+
+class: middle
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+]
+.right-column[
+Dans le projet de la société R pour avoir plus de controle sur le code et les classes, nous allons utiliser les interfaces.
+
+  - Ajouter une interface pour la classe `Employe` avec ses méthodes
+
+  - Ajouter une interface pour la classe `Responsable` avec ses méthodes (héritage compris)
+]
+
+---
+
+class: middle
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+]
+.right-column[
+  PHP a des classes et méthodes abstraites. Les classes définies comme abstraites ne peuvent pas être instanciées, et toute classe contenant au moins une méthode abstraite doit elle-aussi être abstraite. Les méthodes définies comme abstraites déclarent simplement la signature de la méthode ; elles ne peuvent définir son implémentation.
+
+  Lors de l'héritage d'une classe abstraite, toutes les méthodes marquées comme abstraites dans la déclaration de la classe parente doivent être définies par la classe enfant et suivre les règles habituelles d'[héritage](https://www.php.net/manual/fr/language.oop5.inheritance.php) et de [compatibilité de signature](https://www.php.net/manual/fr/language.oop5.basic.php#language.oop.lsp).
+
+  #### Définition d'une classe abstraite
+
+  ```php
+  abstract class AbstractVehicule
+  {
+    private int $vitesse;
+    protected string $carburant;
+
+    abstract public function rouler();
+  }
+  ```
+]
+
+---
+
+class: middle
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+]
+.right-column[
+  #### Héritage de la classe abstraite
+
+  ```php
+  class Voiture extends AbstractVehicule
+  {
+    private int $vitesse = 90; // Error
+    protected string $carburant = 'diesel';
+
+    public function rouler()
+    {
+      echo 'Voiture '.$this->carburant.', roulant à '.$this->vitesse.' KM/h avec '.
+      self::NB_ROUES.' roues';
+    }
+  }
+  ```
+]
+
+---
+
+class: middle
+.left-column[
+  ### Interfaces
+  ### .red[**Travaux Pratique**]
+  ### Abstraction
+  ### Polymorphisme
+]
+.right-column[
+  **Le polymorphisme** est un outil puissant et fondamental dans la programmation orientée objet. Il décrit un modèle dans lequel **les classes ont des fonctionnalités différentes tout en partageant une interface commune.**
+
+  La beauté du polymorphisme réside dans le fait que le code travaillant avec les différentes classes n'a **pas besoin de savoir quelle classe il utilise**, car elles sont toutes utilisées de la même manière.
+
+  Dans le monde de la programmation, le polymorphisme est utilisé pour rendre les applications plus modulaires et extensibles. Au lieu d'instructions conditionnelles compliquées décrivant différents plans d'action, vous créez des objets interchangeables que vous sélectionnez en fonction de vos besoins. C'est l'objectif de base du polymorphisme.
+]
