@@ -4,12 +4,13 @@ class Voiture
 {
     public $vitesse = 100;
     public $carburant = 'diesel';
+
+    public function rouler()
+    {
+        echo 'Voiture '.$this->carburant.', roulant à '.$this->vitesse.' KM/h';
+    }
 }
 
 $mercedes = new Voiture();
-var_dump($mercedes);
-
-$mercedes->vitesse = 120;
-$mercedes->carburant = 'ethanol';
-var_dump($mercedes);
+$mercedes->rouler();
 
