@@ -2,8 +2,8 @@
 
 class Voiture
 {
-    public $vitesse = 100;
-    public $carburant = 'diesel';
+    private $vitesse = 100;
+    private $carburant = 'diesel';
 
     public function rouler()
     {
