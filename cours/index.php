@@ -2,6 +2,8 @@
 
 class Voiture
 {
+    const NB_ROUES = 4;
+
     public static $nbPortes = 5;
     private $vitesse = 100;
     private $carburant = 'diesel';
@@ -17,7 +19,8 @@ class Voiture
 
     public function rouler()
     {
-        echo 'Voiture '.$this->carburant.', roulant à '.$this->vitesse.' KM/h';
+      return 'Voiture '.$this->carburant.', roulant à '.$this->vitesse.' KM/h avec '.
+      self::NB_ROUES.' roues';
     }
 
     public static function ajouterPortes()
@@ -49,4 +52,6 @@ class Voiture
     }
 }
 
-var_dump([Voiture::$nbPortes, Voiture::ajouterPortes()]);
+$mercedes = new Voiture();
+
+var_dump([Voiture::NB_ROUES, $mercedes->rouler()]);
