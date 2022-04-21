@@ -1,55 +1,43 @@
 <?php
 
-class Employe {
-    public $id;
-    public $nom;
-    public $prenom;
-    public $age;
-    public $anciennete;
+require_once 'Employe.php';
+require_once 'Equipe.php';
 
-    public function presentation()
-    {
-        echo "#$this->id - Mon nom est $this->nom, mon prenom est $this->prenom,
-            j'ai $this->age ans
-            je travail depuis $this->anciennete ans.<br />";
-    }
-}
+$employe1 = (new Employe())
+    ->setNom("Hamada")
+    ->setPrenom("Fahari")
+    ->setAge(35)
+    ->setAnciennete(12)
+;
 
-class Equipe {
-    public $nom;
-    public $employes = [];
-}
+$employe2 = (new Employe())
+    ->setNom("Dupont")
+    ->setPrenom("Michel")
+    ->setAge(50)
+    ->setAnciennete(20)
+;
 
-$employe1 = new Employe();
-$employe1->id = uniqid();
-$employe1->nom = "Hamada";
-$employe1->prenom = "Fahari";
-$employe1->age = 35;
-$employe1->anciennete = 12;
-
-$employe2 = new Employe();
-$employe2->id = uniqid();
-$employe2->nom = "Dupont";
-$employe2->prenom = "Michel";
-$employe2->age = 50;
-$employe2->anciennete = 20;
-
-$employe3 = new Employe();
-$employe3->id = uniqid();
-$employe3->nom = "Lyse";
-$employe3->prenom = "Anna";
-$employe3->age = 20;
-$employe3->anciennete = 1;
+$employe3 = (new Employe())
+    ->setNom("Lyse")
+    ->setPrenom("Anna")
+    ->setAge(20)
+    ->setAnciennete(1)
+;
 
 $employe1->presentation();
 $employe2->presentation();
 $employe3->presentation();
 
-$dreamTeam = new Equipe();
-$dreamTeam->nom = 'Dream Team';
-$dreamTeam->employes[] = $employe1;
-$dreamTeam->employes[] = $employe2;
-$dreamTeam->employes[] = $employe3;
+$dreamTeam = (new Equipe())
+    ->setNom('Dream Team')
+    ->setEmployes([$employe1, $employe2, $employe3])
+;
+
+$employe4 = new Employe('Térieur', 'Alain', 15, 56);
+$employe5 = new Employe('Térieur', 'Alex', 75, -1);
+$employe6 = new Employe('Verse', 'Alain', 75, -1);
+
+$rocketTeam = new Equipe('Rocket Team', [$employe4, $employe5, $employe6]);
 
 echo '<pre>';
-var_dump(compact('dreamTeam'));
+var_dump(compact('dreamTeam', 'rocketTeam'));
