@@ -17,7 +17,7 @@ class Vehicule
         $this->setCarburant($carburant);
     }
 
-    public function rouler()
+    final public function rouler()
     {
         return 'Voiture '.$this->carburant.', roulant à '.$this->vitesse.' KM/h avec '.
         self::NB_ROUES.' roues';
@@ -52,8 +52,8 @@ class Vehicule
     }
 }
 
-class Camion extends Vehicule { }
-class Voiture extends Vehicule 
+final class Camion extends Vehicule { }
+final class Voiture extends Vehicule 
 { 
     public function conduire()
     {
@@ -70,6 +70,3 @@ $volvoTruck->rouler();
 $mercedes->rouler();
 
 var_dump(compact('mercedes', 'volvoTruck', 'suziki'));
-
-var_dump($mercedes->conduire());
-var_dump($volvoTruck->conduire());
