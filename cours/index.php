@@ -1,10 +1,32 @@
 <?php
 
+trait PropVitesseTrait 
+{ 
+    protected $vitesse = 120;
+    abstract public function setVitesse($vitesse);
+}
+
+trait VitesseTrait 
+{
+    use PropVitesseTrait;
+
+    public function setVitesse($vitesse) 
+    { 
+        $this->vitesse = $vitesse; 
+    }
+    
+    public function getVitesse() 
+    { 
+        return $this->vitesse; 
+    }
+}
+
+
 class Vehicule
 {
     const NB_ROUES = 4;
+    use VitesseTrait;
 
-    protected $vitesse = 120;
     protected $carburant = 'diesel';
     public static $nbPortes = 5;
 
@@ -27,16 +49,6 @@ class Vehicule
     {
         self::$nbPortes++;
         return sprintf("Une voiture avec %d portes", self::$nbPortes);
-    }
-
-    public function setVitesse($vitesse)
-    {
-        $this->vitesse = $vitesse;
-    }
-
-    public function getVitesse()
-    {
-        return $this->vitesse;
     }
 
     public function setCarburant($carburant)
