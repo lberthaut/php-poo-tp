@@ -1,14 +1,20 @@
 <?php
 
-class Equipe {
+class Equipe 
+{
+    const NB_EMPLOYE_MAX = 5;
+
     private $nom;
     private $employes = [];
+    public static $nbHeuresTravails = 0;
 
     public function __construct($nom = null, $employes = [])
     {
-        $this->setNom($nom)
-            ->setEmployes($employes)
-        ;
+        $this->setNom($nom);
+
+        foreach ($employes as $employe) {
+            $this->addEmploye($employe);
+        }
     }
 
     /**
@@ -44,10 +50,30 @@ class Equipe {
      *
      * @return  self
      */ 
-    public function setEmployes($employes)
+    public function addEmploye($employe)
     {
-        $this->employes = $employes;
+        if(count($this->employes) <= self::NB_EMPLOYE_MAX) {
+            $this->employes[] = $employe;
+        }
 
         return $this;
+    }
+
+    public function travailler($nbHeures)
+    {
+        return self::$nbHeuresTravails += count($this->getEmployes()) * $nbHeures;
+    }
+
+    public function percent() 
+    {
+        return count($this->getEmployes()) / self::NB_EMPLOYE_MAX * 100;
+    }
+
+    /**
+     * Get the value of nbHeuresTravails
+     */ 
+    public static function getNbHeuresTravails()
+    {
+        return self::$nbHeuresTravails;
     }
 }
