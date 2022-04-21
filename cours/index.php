@@ -2,6 +2,7 @@
 
 class Voiture
 {
+    public static $nbPortes = 5;
     private $vitesse = 100;
     private $carburant = 'diesel';
 
@@ -17,6 +18,12 @@ class Voiture
     public function rouler()
     {
         echo 'Voiture '.$this->carburant.', roulant à '.$this->vitesse.' KM/h';
+    }
+
+    public static function ajouterPortes()
+    {
+      self::$nbPortes++;
+      return sprintf("Une voiture avec %d portes", self::$nbPortes);
     }
 
     public function setVitesse($vitesse)
@@ -42,8 +49,4 @@ class Voiture
     }
 }
 
-  $mercedes = new Voiture();
-  $scenic = new Voiture(90, 'ethanol');
-
-  var_dump(compact('scenic', 'mercedes'));
-
+var_dump([Voiture::$nbPortes, Voiture::ajouterPortes()]);
