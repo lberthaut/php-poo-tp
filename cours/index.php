@@ -1,41 +1,32 @@
 <?php
+
 class Vehicule
-{
-
-}
-
-class Camion extends Vehicule 
-{ 
-  
-}
-
-class Voiture extends Vehicule
 {
     const NB_ROUES = 4;
 
+    protected $vitesse = 120;
+    protected $carburant = 'diesel';
     public static $nbPortes = 5;
-    private $vitesse = 100;
-    private $carburant = 'diesel';
 
     public function __construct($vitesse = null, $carburant = null)
     {
-      if(null !== $vitesse) {
-        $this->vitesse = $vitesse;
-      }
-      
-      $this->setCarburant($carburant);
+        if(null !== $vitesse) {
+            $this->vitesse = $vitesse;
+        }
+        
+        $this->setCarburant($carburant);
     }
 
     public function rouler()
     {
-      return 'Voiture '.$this->carburant.', roulant à '.$this->vitesse.' KM/h avec '.
-      self::NB_ROUES.' roues';
+        return 'Voiture '.$this->carburant.', roulant à '.$this->vitesse.' KM/h avec '.
+        self::NB_ROUES.' roues';
     }
 
     public static function ajouterPortes()
     {
-      self::$nbPortes++;
-      return sprintf("Une voiture avec %d portes", self::$nbPortes);
+        self::$nbPortes++;
+        return sprintf("Une voiture avec %d portes", self::$nbPortes);
     }
 
     public function setVitesse($vitesse)
@@ -61,6 +52,13 @@ class Voiture extends Vehicule
     }
 }
 
-$mercedes = new Voiture();
+class Camion extends Vehicule { }
+class Voiture extends Vehicule { }
 
-var_dump([Voiture::NB_ROUES, $mercedes->rouler()]);
+$mercedes = new Voiture();
+$volvoTruck = new Camion();
+
+var_dump(compact('mercedes', 'volvoTruck'), [
+    'carburant' => $mercedes->getCarburant(),
+    'vitesse' => $volvoTruck->getVitesse()
+]);
