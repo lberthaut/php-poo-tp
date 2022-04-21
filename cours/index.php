@@ -53,12 +53,23 @@ class Vehicule
 }
 
 class Camion extends Vehicule { }
-class Voiture extends Vehicule { }
+class Voiture extends Vehicule 
+{ 
+    public function conduire()
+    {
+      return 'Bonne conduite à '.$this->vitesse.' Km/h  ...';
+    }
+}
 
-$mercedes = new Voiture();
-$volvoTruck = new Camion();
+$suziki = new Vehicule(120, 'diesel');
+$volvoTruck = new Camion(150, 'essence');
+$mercedes = new Voiture(90, 'ethanol');
 
-var_dump(compact('mercedes', 'volvoTruck'), [
-    'carburant' => $mercedes->getCarburant(),
-    'vitesse' => $volvoTruck->getVitesse()
-]);
+$suziki->rouler();
+$volvoTruck->rouler();
+$mercedes->rouler();
+
+var_dump(compact('mercedes', 'volvoTruck', 'suziki'));
+
+var_dump($mercedes->conduire());
+var_dump($volvoTruck->conduire());
