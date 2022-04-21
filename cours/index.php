@@ -1,6 +1,15 @@
 <?php
+class Vehicule
+{
 
-class Voiture
+}
+
+class Camion extends Vehicule 
+{ 
+  
+}
+
+class Voiture extends Vehicule
 {
     const NB_ROUES = 4;
 
