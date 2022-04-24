@@ -1,6 +1,8 @@
 <?php
 
+require_once 'NomTrait.php';
 require_once 'Employe.php';
+require_once 'Responsable.php';
 require_once 'Equipe.php';
 
 $employe1 = (new Employe())
@@ -24,22 +26,26 @@ $employe3 = (new Employe())
     ->setAnciennete(1)
 ;
 
-$employe1->presentation();
-$employe2->presentation();
-$employe3->presentation();
-
-$dreamTeam = new Equipe('Dream Team', [$employe1, $employe2, $employe3]);
+$responsable1 = new Responsable('Krok', 'Odile', 50, 20);
+$dreamTeam = (new Equipe('Dream Team', [$employe1, $employe2, $employe3]))
+    ->setResponsable($responsable1);
 
 $employe4 = new Employe('Térieur', 'Alain', 15, 56);
 $employe5 = new Employe('Térieur', 'Alex', 75, -1);
 $employe6 = new Employe('Verse', 'Alain', 75, -1);
 
-$rocketTeam = new Equipe('Rocket Team', [$employe4, $employe5, $employe6]);
+$responsable2 = new Responsable('Zole', 'Camille', 42, 20);
+$rocketTeam = (new Equipe('Rocket Team', [$employe4, $employe5, $employe6]))
+    ->setResponsable($responsable2);
 
 $rocketTeam->travailler(8);
 $dreamTeam->travailler(7);
 
+$rocketTeam->supressionEmploye($employe4);
+
 echo '<pre>';
+
+var_dump(compact('rocketTeam', 'dreamTeam'));
 var_dump(['Nombre d\'heure travaillé' => Equipe::getNbHeuresTravails()]);
 
 var_dump([

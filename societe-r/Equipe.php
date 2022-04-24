@@ -4,8 +4,10 @@ class Equipe
 {
     const NB_EMPLOYE_MAX = 5;
 
-    private $nom;
+    use NomTrait;
+
     private $employes = [];
+    private Responsable $responsable;
     public static $nbHeuresTravails = 0;
 
     public function __construct($nom = null, $employes = [])
@@ -15,26 +17,6 @@ class Equipe
         foreach ($employes as $employe) {
             $this->addEmploye($employe);
         }
-    }
-
-    /**
-     * Get the value of nom
-     */ 
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * Set the value of nom
-     *
-     * @return  self
-     */ 
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
     }
 
     /**
@@ -58,6 +40,23 @@ class Equipe
 
         return $this;
     }
+    
+    /**
+     * Set the value of employes
+     *
+     * @return  self
+     */ 
+    public function supressionEmploye(Employe $employe)
+    {
+        $this->equipe = array_filter(
+            $this->employes, 
+            function(Employe $employeEquipe) use ($employe) {
+                return $employe->getId() !== $employeEquipe->getId();
+            }   
+        );
+
+        return $this;
+    }
 
     public function travailler($nbHeures)
     {
@@ -75,5 +74,26 @@ class Equipe
     public static function getNbHeuresTravails()
     {
         return self::$nbHeuresTravails;
+    }
+
+    /**
+     * Get the value of responsable
+     */ 
+    public function getResponsable()
+    {
+        return $this->responsable;
+    }
+
+    /**
+     * Set the value of responsable
+     *
+     * @return  self
+     */ 
+    public function setResponsable(Responsable $responsable)
+    {
+        $this->responsable = $responsable;
+        $this->responsable->setEquipe($this);
+
+        return $this;
     }
 }

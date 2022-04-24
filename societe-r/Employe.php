@@ -2,8 +2,9 @@
 
 class Employe 
 {
+    use NomTrait;
+
     private $id;
-    private $nom;
     private $prenom;
     private $age = 18;
     private $anciennete = 0;
@@ -45,26 +46,6 @@ class Employe
     public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of nom
-     */ 
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * Set the value of nom
-     *
-     * @return  self
-     */ 
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
 
         return $this;
     }
