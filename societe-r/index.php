@@ -1,9 +1,12 @@
 <?php
 
-require_once 'NomTrait.php';
-require_once 'Employe.php';
-require_once 'Responsable.php';
-require_once 'Equipe.php';
+require_once 'Traits/NomTrait.php';
+require_once 'Interface/EmployeInterface.php';
+require_once 'Interface/ResponsableInterface.php';
+require_once 'Interface/EquipeInterface.php';
+require_once 'Model/Employe.php';
+require_once 'Model/Responsable.php';
+require_once 'Model/Equipe.php';
 
 $employe1 = (new Employe())
     ->setNom("Hamada")

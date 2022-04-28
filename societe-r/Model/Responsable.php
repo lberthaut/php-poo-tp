@@ -1,6 +1,6 @@
 <?php
 
-final class Responsable extends Employe
+final class Responsable extends Employe implements ResponsableInterface
 {
     private Equipe $equipe;
 

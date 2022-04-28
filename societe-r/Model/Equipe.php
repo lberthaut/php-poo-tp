@@ -1,8 +1,8 @@
 <?php
 
-class Equipe 
+class Equipe implements EquipeInterface
 {
-    const NB_EMPLOYE_MAX = 5;
+    
 
     use NomTrait;
 

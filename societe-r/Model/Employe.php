@@ -1,13 +1,13 @@
 <?php
 
-class Employe 
+class Employe implements EmployeInterface
 {
     use NomTrait;
 
     private $id;
     private $prenom;
-    private $age = 18;
-    private $anciennete = 0;
+    private $age = self::AGE_MIN;
+    private $anciennete = self::ANCIENNETE_MIN;
 
     public function __construct(
         $nom = null, 
@@ -85,8 +85,8 @@ class Employe
      */ 
     public function setAge($age)
     {
-        $age = $age > 65 ? 65 : $age;
-        $age = $age < 18 ? 18 : $age;
+        $age = $age > self::AGE_MAX ? self::AGE_MAX : $age;
+        $age = $age < self::AGE_MIN ? self::AGE_MIN : $age;
 
         return $this;
     }
@@ -106,8 +106,8 @@ class Employe
      */ 
     public function setAnciennete($anciennete)
     {
-        $anciennete = $anciennete > 47 ? 47 : $anciennete;
-        $anciennete = $anciennete < 0 ? 0 : $anciennete;
+        $anciennete = $anciennete > self::ANCIENNETE_MAX ? self::ANCIENNETE_MAX : $anciennete;
+        $anciennete = $anciennete < self::ANCIENNETE_MIN ? self::ANCIENNETE_MIN : $anciennete;
         
         $this->anciennete = $anciennete;
 
