@@ -5,6 +5,7 @@ require_once 'VitesseTrait.php';
 require_once 'PorteInterface.php';
 require_once 'RoulerInterface.php';
 require_once 'VehiculeInterface.php';
+require_once 'AbstractVehicule.php';
 require_once 'Vehicule.php';
 require_once 'Camion.php';
 require_once 'Voiture.php';

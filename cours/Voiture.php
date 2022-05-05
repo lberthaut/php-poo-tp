@@ -1,9 +1,21 @@
 <?php
 
-final class Voiture extends Vehicule 
-{ 
-    public function conduire()
+final class Voiture implements VehiculeInterface
+{
+    private $vitesse = 90; // Error
+    protected $carburant = 'diesel';
+    public function rouler()
     {
-      return 'Bonne conduite à '.$this->vitesse.' Km/h  ...';
+        echo 'Voiture '.$this->carburant.', roulant à '.$this->vitesse.' KM/h avec '.
+            self::NB_ROUES.' roues';
+    }
+
+    public static function getNbPortes()
+    {
+        // TODO: Implement getNbPortes() method.
+    }
+
+    public function __construct()
+    {
     }
 }

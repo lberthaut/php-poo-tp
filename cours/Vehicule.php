@@ -1,10 +1,8 @@
 <?php
 
-class Vehicule implements VehiculeInterface
+class Vehicule extends AbstractVehicule implements VehiculeInterface
 {
-    const NB_ROUES = 4;
-    use VitesseTrait;
-
+    private $dimensions = 900;
     protected $carburant = 'diesel';
     protected static $nbPortes = 5;
 
