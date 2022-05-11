@@ -1,6 +1,6 @@
 <?php
 
-final class Voiture implements VehiculeInterface
+final class Voiture implements VehiculeInterface, TransportInterface
 {
     private $vitesse = 90; // Error
     protected $carburant = 'diesel';
@@ -17,5 +17,9 @@ final class Voiture implements VehiculeInterface
 
     public function __construct()
     {
+    }
+
+    public function voyager(Voyageur $voyageur) {
+        return $voyageur->getNom().' voyage en voiture' ;
     }
 }
