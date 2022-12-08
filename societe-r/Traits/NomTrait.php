@@ -1,5 +1,7 @@
 <?php
 
+
+namespace Trait;
 trait NomTrait {
 
     private $nom;

@@ -1,5 +1,11 @@
 <?php
 
+namespace Classes;
+use Interfaces\EmployeInterface;
+use Interfaces\TravailleurInterface;
+use Trait\NomTrait;
+use Exceptions\RExceptions;
+
 class Employe implements EmployeInterface, TravailleurInterface
 {
     use NomTrait;
@@ -85,8 +91,8 @@ class Employe implements EmployeInterface, TravailleurInterface
      */ 
     public function setAge($age)
     {
-        $age = $age > self::AGE_MAX ? self::AGE_MAX : $age;
-        $age = $age < self::AGE_MIN ? self::AGE_MIN : $age;
+        $age = $age > self::AGE_MAX ? self::AGE_MAX : throw new RExceptions('Il a moins de '.$this->age.' ans, le saligaud !');
+        $age = $age < self::AGE_MIN ? self::AGE_MIN : throw new RExceptions('Il a plus de '.$this->$age.' ans, le salopiot !');
 
         return $this;
     }
@@ -106,15 +112,17 @@ class Employe implements EmployeInterface, TravailleurInterface
      */ 
     public function setAnciennete($anciennete)
     {
-        $anciennete = $anciennete > self::ANCIENNETE_MAX ? self::ANCIENNETE_MAX : $anciennete;
+        $anciennete = $anciennete > self::ANCIENNETE_MAX ? self::ANCIENNETE_MAX : throw new RExceptions('Il a plus de '.$this->anciennete.' ans d\'ancienneté, le salaud');
         $anciennete = $anciennete < self::ANCIENNETE_MIN ? self::ANCIENNETE_MIN : $anciennete;
         
+
         $this->anciennete = $anciennete;
 
         return $this;
     }
 
-    public function travailler(){
-        return rand(minHrTravailleEmploye, maxHrTravailleEmploye);
+    public function travailler():int
+    {
+        return rand(6, 9);
     }
 }

@@ -1,14 +1,10 @@
 <?php
 
-final class Voiture implements VehiculeInterface, TransportInterface
+final class Voiture extends Vehicule implements VehiculeInterface, TransportInterface
 {
-    private $vitesse = 90; // Error
-    protected $carburant = 'diesel';
-    public function rouler()
-    {
-        echo 'Voiture '.$this->carburant.', roulant à '.$this->vitesse.' KM/h avec '.
-            self::NB_ROUES.' roues';
-    }
+    public $vitesse = 90; // Error
+    public $carburant = 'diesel';
+
 
     public static function getNbPortes()
     {

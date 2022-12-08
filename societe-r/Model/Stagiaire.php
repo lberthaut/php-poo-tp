@@ -1,7 +1,9 @@
 <?php
 
-require_once 'StagiaireTrait.php';
 
+namespace Classes;
+use Interfaces\TravailleurInterface;
+use Trait\StagiaireTrait;
 class Stagiaire extends TravailleurInterface{
     use StagiaireTrait;
 

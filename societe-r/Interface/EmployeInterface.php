@@ -1,5 +1,6 @@
 <?php
 
+namespace Interfaces;
 interface EmployeInterface
 {
     const AGE_MIN = 18;

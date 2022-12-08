@@ -1,6 +1,6 @@
 <?php
 
-interface TransportInterface {
+/* interface TransportInterface {
     public function voyager(Voyageur $voyageur);
   }
   class Voiture implements TransportInterface {
@@ -24,6 +24,6 @@ interface TransportInterface {
     public function voyager(TransportInterface $transport){
         return $transport->voyager($this);
     }
-  }
+  } */
 
   

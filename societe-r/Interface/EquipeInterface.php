@@ -1,5 +1,6 @@
 <?php
 
+namespace Interfaces;
 interface EquipeInterface
 {
     const NB_EMPLOYE_MAX = 5;

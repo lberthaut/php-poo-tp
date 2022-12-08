@@ -3,7 +3,7 @@
 class Vehicule extends AbstractVehicule implements VehiculeInterface
 {
     private $dimensions = 900;
-    protected $carburant = 'diesel';
+    public $carburant = 'diesel';
     protected static $nbPortes = 5;
 
     public function __construct($vitesse = null, $carburant = null)
@@ -34,9 +34,10 @@ class Vehicule extends AbstractVehicule implements VehiculeInterface
 
     public function setCarburant($carburant)
     {
-        if(in_array($carburant, ['diesel', 'essence', 'ethanol'])) {
-            $this->carburant = $carburant;
-        }
+      if(!in_array($carburant, ['diesel', 'essence', 'ethanol'])) {
+        throw new \Exception("La voiture ne supporte pas le carburant ".$carburant, 1);
+      }
+      $this->carburant = $carburant;
     }
 
     public function getCarburant()

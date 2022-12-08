@@ -1,9 +1,13 @@
 <?php
 
+namespace Classes;
+use Interfaces\ResponsableInterface;
+use Interfaces\TravailleurInterface;
+use Classes\Employe;
 final class Responsable extends Employe implements ResponsableInterface, TravailleurInterface
 {
     public function faireTravailler(TravailleurInterface $travailleur){
-        return $this->travailleur->travailler();
+        return $travailleur->travailler();
     }
 
     private Equipe $equipe;

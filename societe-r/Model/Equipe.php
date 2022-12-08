@@ -1,5 +1,10 @@
 <?php
 
+namespace Classes;
+use Interfaces\EquipeInterface;
+use Interfaces\TravailleurInterface;
+use Trait\NomTrait;
+use Exceptions\RExceptions;
 class Equipe implements EquipeInterface
 {
     
@@ -32,11 +37,12 @@ class Equipe implements EquipeInterface
      *
      * @return  self
      */ 
-    public function addEmploye($travailleur)
+    public function addEmploye(TravailleurInterface $travailleur)
     {
-        if(count($this->employes) <= self::NB_EMPLOYE_MAX) {
-            $this->employes[] = $travailleur;
+        if(count($this->employes) >= self::NB_EMPLOYE_MAX) {
+            throw new RExceptions('Vous etes plus de '.count($this->employes).', bande de cons !');
         }
+        $this->employes[] = $travailleur;
 
         return $this;
     }
@@ -46,11 +52,11 @@ class Equipe implements EquipeInterface
      *
      * @return  self
      */ 
-    public function supressionEmploye(Employe $travailleur)
+    public function supressionEmploye(TravailleurInterface $travailleur)
     {
         $this->equipe = array_filter(
             $this->employes, 
-            function(Employe $employeEquipe) use ($travailleur) {
+            function(TravailleurInterface $employeEquipe) use ($travailleur) {
                 return $travailleur->getId() !== $employeEquipe->getId();
             }   
         );
@@ -58,13 +64,15 @@ class Equipe implements EquipeInterface
         return $this;
     }
 
-    public function travailler($nbHeures)
+    public function travailler()
     {
-        return self::$nbHeuresTravails += count($this->getEmployes()) * $nbHeures;
+        foreach($this->employes as $key => $travailleur){
+            self::$nbHeuresTravails += $this->responsable->faireTravailler($travailleur);
+            }
     }
 
     public function percent() 
-    {
+    {   
         return count($this->getEmployes()) / self::NB_EMPLOYE_MAX * 100;
     }
 

@@ -1,15 +1,14 @@
 <?php
 
-require_once 'Traits/NomTrait.php';
-require_once 'Interface/EmployeInterface.php';
-require_once 'Interface/ResponsableInterface.php';
-require_once 'Interface/EquipeInterface.php';
-require_once 'TravailleurInterface.php';
-require_once 'Model/Employe.php';
-require_once 'Model/Responsable.php';
-require_once 'Model/Equipe.php';
+use Classes\Employe;
+use Classes\Equipe;
+use Classes\Responsable;
+use Exceptions\RExceptions;
 
+require 'Autoloader.php';
+Autoloader::register();
 
+try{
 $travailleur1 = (new Employe())
     ->setNom("Hamada")
     ->setPrenom("Fahari")
@@ -37,16 +36,22 @@ $dreamTeam = (new Equipe('Dream Team', [$travailleur1, $travailleur2, $travaille
 
 $travailleur4 = new Employe('Térieur', 'Alain', 15, 56);
 $travailleur5 = new Employe('Térieur', 'Alex', 75, -1);
-$travailleur6 = new Employe('Verse', 'Alain', 75, -1);
+$travailleur6 = new Employe('Verse', 'Alain', 75, 63);
 
 $responsable2 = new Responsable('Zole', 'Camille', 42, 20);
 $rocketTeam = (new Equipe('Rocket Team', [$travailleur4, $travailleur5, $travailleur6]))
     ->setResponsable($responsable2);
+}catch(RExceptions $e){
+    echo 'Message d\'erreur : ' .$e->getMessage();
+    echo 'Ligne d\'erreur : ' .$e->getLine();
+    echo $e->getFile();
+};
 
 $rocketTeam->travailler(8);
 $dreamTeam->travailler(7);
 
 $rocketTeam->supressionEmploye($travailleur4);
+
 
 echo '<pre>';
 
@@ -57,3 +62,4 @@ var_dump([
     'rocketTeam' => $rocketTeam->percent(), 
     'dreamTeam' => $dreamTeam->percent()
 ]);
+
