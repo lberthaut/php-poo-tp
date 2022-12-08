@@ -14,8 +14,8 @@ class Equipe implements EquipeInterface
     {
         $this->setNom($nom);
 
-        foreach ($employes as $employe) {
-            $this->addEmploye($employe);
+        foreach ($employes as $travailleur) {
+            $this->addEmploye($travailleur);
         }
     }
 
@@ -32,10 +32,10 @@ class Equipe implements EquipeInterface
      *
      * @return  self
      */ 
-    public function addEmploye($employe)
+    public function addEmploye($travailleur)
     {
         if(count($this->employes) <= self::NB_EMPLOYE_MAX) {
-            $this->employes[] = $employe;
+            $this->employes[] = $travailleur;
         }
 
         return $this;
@@ -46,12 +46,12 @@ class Equipe implements EquipeInterface
      *
      * @return  self
      */ 
-    public function supressionEmploye(Employe $employe)
+    public function supressionEmploye(Employe $travailleur)
     {
         $this->equipe = array_filter(
             $this->employes, 
-            function(Employe $employeEquipe) use ($employe) {
-                return $employe->getId() !== $employeEquipe->getId();
+            function(Employe $employeEquipe) use ($travailleur) {
+                return $travailleur->getId() !== $employeEquipe->getId();
             }   
         );
 
