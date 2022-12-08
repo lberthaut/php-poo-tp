@@ -1,7 +1,11 @@
 <?php
 
-final class Responsable extends Employe implements ResponsableInterface
+final class Responsable extends Employe implements ResponsableInterface, TravailleurInterface
 {
+    public function faireTravailler(TravailleurInterface $travailleur){
+        return $this->travailleur->travailler();
+    }
+
     private Equipe $equipe;
 
     /**

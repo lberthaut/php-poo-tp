@@ -1,6 +1,6 @@
 <?php
 
-class Employe implements EmployeInterface
+class Employe implements EmployeInterface, TravailleurInterface
 {
     use NomTrait;
 
@@ -112,5 +112,9 @@ class Employe implements EmployeInterface
         $this->anciennete = $anciennete;
 
         return $this;
+    }
+
+    public function travailler(){
+        return rand(minHrTravailleEmploye, maxHrTravailleEmploye);
     }
 }
