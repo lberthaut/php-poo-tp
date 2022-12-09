@@ -1,7 +1,14 @@
 <?php
 
-require 'Autoloader.php';
-Autoloader::register();
+use App\Avion;
+use App\TransportInterface;
+use App\VitesseTrait;
+use App\Voiture;
+
+require_once 'vendor/autoload.php';
+
+/* require 'Autoloader.php';
+Autoloader::register(); */
 
 
 /* $suziki = new Vehicule(120, 'diesel');
@@ -28,7 +35,7 @@ var_dump($dany->voyager($voiture));
 $avion = new Avion();
 var_dump($dany->voyager($avion)); */
 
-try {
+/*  try {
     $voiture = new Voiture();
     $voiture->setCarburant('chantilly');
   } catch (\Exception $e) {
@@ -59,3 +66,21 @@ var_dump($parent->getName());
 
 $interfaces = $reflection->getInterfaceNames();
 var_dump($interfaces);
+ 
+use Symfony\Component\HttpClient\HttpClient;
+
+$httpClient = HttpClient::create();
+$response = $httpClient->request('GET', 'https://pokeapi.co/api/v2/pokemon/ditto');
+dump($response); */
+
+/* function add(int $x, int $y): int {
+  return $x + $y;
+}
+var_dump(add(1,2)); # int(3)
+var_dump(add(1.0,2.3)); # int(3.3)
+var_dump(add(1.0,'3')); # int(4)
+var_dump(add('un','deux'));  */
+
+$mercedes = new Voiture(160, 'chantilly');
+$mercedes -> setVitesse(150);
+var_dump($mercedes);
